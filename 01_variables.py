@@ -50,3 +50,4 @@ address : str = "Mi dirección"
 address = 123
 print(type(address)) # de resultado nos saldria 'int' , ya que aunque pongamos el tipo se puede cambiar
 
+###### No se pueden declarar constantes, solo podemos poner CONST_nombre Para saber que esa es constante
