@@ -1,5 +1,6 @@
 # Sets
 
+# declarar conjuntos
 my_set = set()
 other_Set = {} # tipado debil
 
