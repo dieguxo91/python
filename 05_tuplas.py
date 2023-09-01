@@ -16,6 +16,7 @@ print(my_tuple.count("garcia"))
 print(my_tuple.index("diego"))
 
 # my_tuple[1] = 1.80 # son valores constantes, una vez creada de una forma no la podriamos editar
+# del my_tuple[1] # al ser "constantes" no podemos borrar ningun valor
 print(my_tuple)
 
 other_tuple = (23, 45, "tupla")
