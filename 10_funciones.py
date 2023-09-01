@@ -28,7 +28,7 @@ def print_name_whit_default (name, surname, alias = "sin alias"):
 print_name_whit_default("diego", "garcia","dieguxo" ) 
 print_name_whit_default("diego", "garcia" )
 
-# Si añadimos el asterico podremos insertar una tupla
+# Si añadimos el asterico podremos insertar una tupla (parametros pasados por comas)
 def print_upper_text(*texts): 
     for text in texts:
         print(str(text).upper())
