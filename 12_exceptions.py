@@ -4,8 +4,6 @@ number_one, number_two = 5, 1
 
 number_two = "1"
 
-
-
 # Try - Except
 try :
     print(number_one + number_two)
