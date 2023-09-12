@@ -1,7 +1,6 @@
 from fastapi import FastAPI
 from routers import products,users # Routers
 
-
 """
 para que funcione tenemos que instalar las librerias:
 pip install "fastapi[all]"
@@ -18,7 +17,8 @@ Deter el servidor Ctrl + c
 
 app = FastAPI() # una variable con el constructor de fastapi
 
-app.include_router(products.router) # Router
+# Router 
+app.include_router(products.router) 
 app.include_router(users.router)
 
 @app.get("/") # anotación de FastAPI
