@@ -1,1 +1,1 @@
-# necesario para que se un paquete la carpeta que lo contenga
+# necesario para que sea un paquete la carpeta que lo contenga
