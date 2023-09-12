@@ -1,7 +1,7 @@
-from fastapi import FastAPI
+from fastapi import APIRouter
 from pydantic import BaseModel # nos permite crear una entidad (parecido a la anotacion del lombok)
 
-app = FastAPI() 
+router = APIRouter() 
 
 # Entidad user
 class User(BaseModel):
@@ -16,21 +16,21 @@ users_list = [User( id = 1,name = "diego", surname = "Garcia", age = 31),
          User(id = 2,name = "jose", surname = "vazquez", age = 30),
          User(id = 3,name = "daniela", surname = "Garcia", age = 27)]
 
-@app.get("/users") # devuelve la BBDD falsa
+@router.get("/users") # devuelve la BBDD falsa
 async def users():
     return users_list
 
-@app.get("/usersjson") # ejemplo, no es lo normal
+@router.get("/usersjson") # ejemplo, no es lo normal
 async def usersjson():
     return [{"name":"diego", "surname":"Garcia", "age": 31},
             {"name":"jose", "surname":"vazquez", "age": 30},
             {"name":"daniela", "surname":"Garcia", "age": 27}]
 
-@app.get("/user/{id}")  
+@router.get("/user/{id}")  
 async def user(id: int): # importante ponerle el tipo, sino pondra el path como un String
     return search_user(id)
     
-@app.get("/username/{name}") 
+@router.get("/username/{name}") 
 async def user(name: str):
     users = list(filter(lambda user: user.name == name, users_list))
     if len(users) > 0:
@@ -38,15 +38,15 @@ async def user(name: str):
     else:
         return {"error":"El nombre no pertenece a ningun usuario"}
     
-@app.post("/user/") # Funciona correctamente
+@router.post("/user/") # Funciona correctamente
 async def post_user(user: User):
     if type(search_user(user.id)) != User :
-        users_list.append(user)
+        users_list.routerend(user)
         return user
     else:
         return {"error":"El usuario ya existe"}
     
-@app.put("/user/") # Funciona correctamente
+@router.put("/user/") # Funciona correctamente
 async def put_user(user: User):
 
     found = False
@@ -61,7 +61,7 @@ async def put_user(user: User):
     else:
         return {"error":"El usuario no ha podido ser actualizado"}
 
-@app.delete("/user/{id}") # Funciona correctamente
+@router.delete("/user/{id}") # Funciona correctamente
 async def put_user(id:int):
     for saved_user in users_list:
         if saved_user.id == id:

@@ -1,4 +1,7 @@
 from fastapi import FastAPI
+from routers import products,users # Routers
+
+
 """
 para que funcione tenemos que instalar las librerias:
 pip install "fastapi[all]"
@@ -15,12 +18,13 @@ Deter el servidor Ctrl + c
 
 app = FastAPI() # una variable con el constructor de fastapi
 
+app.include_router(products.router) # Router
+app.include_router(users.router)
+
 @app.get("/") # anotación de FastAPI
 async def root():
-    return "Hello World!!!" # {"message":"Hello World"}
+    return "Hello API!!!" # {"message":"Hello World"}
 
 @app.get("/url") # http://127.0.0.1:8000/url
 async def root():
     return  {"url":"https_//mouredev.com/python"}
-
-
