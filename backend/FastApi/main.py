@@ -1,5 +1,6 @@
 from fastapi import FastAPI
-from routers import products,users # Routers
+from routers import products,users,jwt_auth_users # Routers
+from fastapi.staticfiles import StaticFiles
 
 """
 para que funcione tenemos que instalar las librerias:
@@ -20,6 +21,8 @@ app = FastAPI() # una variable con el constructor de fastapi
 # Router 
 app.include_router(products.router) 
 app.include_router(users.router)
+app.include_router(jwt_auth_users.router)
+app.mount("/static", StaticFiles(directory="static"), name="static") # para montar ficheros estatico (imágenes)
 
 @app.get("/") # anotación de FastAPI
 async def root():
@@ -28,3 +31,6 @@ async def root():
 @app.get("/url") # http://127.0.0.1:8000/url
 async def root():
     return  {"url":"https_//mouredev.com/python"}
+
+
+# para recursos estaticos

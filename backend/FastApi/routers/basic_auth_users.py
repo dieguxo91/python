@@ -44,7 +44,7 @@ def search_user(username: str): # funcion para securizar la contraseña, crearia
     
 async def current_user(token: str = Depends(oauth2)): # un criterio de dependecia
     user = search_user(token)
-    if not user: # si no hay token no habria usuario, por lo cual 
+    if not user: # si no hay token no habria usuario, por lo cual  nos daria no autorizado
         raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED,
                              detail="Credenciales de autenticación invalidas", headers={"WWW-Authenticate":"Bearer"})
     
@@ -72,7 +72,7 @@ async def login(form: OAuth2PasswordRequestForm = Depends()):
 
     return{"access_token": user.username, "token_type": "bearer"} # deberia crearse un token para ello
 
-@app.get("/users/me")
+@app.get("/usuario/me")
 async def me(user: User = Depends(current_user)):
     return user
 
