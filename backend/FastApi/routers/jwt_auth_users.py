@@ -11,7 +11,7 @@ pip install "python-jose[cryptography]"
 pip install "passlib[bcrypt]" # algoritmo del token
 """
 
-ALGORITHM = "HS256" # Tipo de haseho de la password
+ALGORITHM = "HS256" # Tipo de hasheo de la password
 ACCESS_TOKEN_DURATION = 1
 
 router = APIRouter()
