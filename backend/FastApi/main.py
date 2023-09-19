@@ -1,5 +1,5 @@
 from fastapi import FastAPI
-from routers import products,users,jwt_auth_users # Routers
+from routers import products,users,jwt_auth_users, users_db # Routers
 from fastapi.staticfiles import StaticFiles
 
 """
@@ -22,6 +22,7 @@ app = FastAPI() # una variable con el constructor de fastapi
 app.include_router(products.router) 
 app.include_router(users.router)
 app.include_router(jwt_auth_users.router)
+app.include_router(users_db.router)
 app.mount("/static", StaticFiles(directory="static"), name="static") # para montar ficheros estatico (imágenes)
 
 @app.get("/") # anotación de FastAPI
