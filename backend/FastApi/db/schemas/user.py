@@ -1,4 +1,4 @@
-
+# necesitamos los schemas para conectar con la bbdd
 def user_schema(user) -> dict: # podria ser un User en vez de un dict
     return {"id": str(user["_id"]), # lo casteamos a string para que no haya errores
             "name":user["name"],
